@@ -6,13 +6,15 @@ This image prepares the environment required to build [AeroGear UnifiedPush](htt
 
 Follow the [instructions](http://docs.docker.com/installation/)
 
-## Building the image
-
-`docker build -t abstractj/unifiedpush-dev .`
-
 ## Running the image
 
 `docker run -it -p 8080:8080 -p 9090:9090 abstractj/unifiedpush-dev`
+
+## Building the image (alternative)
+
+Clone the repo and build yourself:
+
+`docker build -t abstractj/unifiedpush-dev .`
 
 ## Accessing it
 
@@ -44,4 +46,5 @@ Checkout
 
 ## Contributing
 
-Patches are welcome, just send a pull request and I will be happy on merging it.
+Patches are welcome, just send a pull request and I will be happy on merging it. If you want more images, open issues
+with the request.
