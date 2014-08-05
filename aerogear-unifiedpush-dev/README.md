@@ -24,6 +24,24 @@ Access it:
 
 `http://myip:8080/ag-push`
 
+## Pull request review
+
+Start Docker with Bash
+
+`docker run --rm -it --entrypoint=/bin/bash abstractj/unifiedpush-dev && cd ..`
+
+Add the configuration to fetch pull requests
+
+`git config --add remote.origin.fetch "+refs/pull/*/head:refs/remotes/origin/pr/*"`
+
+Run git fetch
+
+`git fetch origin`
+
+Checkout
+
+`git checkout origin/pr/PR_NUMBER`
+
 ## Contributing
 
 Patches are welcome, just send a pull request and I will be happy on merging it.
