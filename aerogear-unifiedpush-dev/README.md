@@ -23,3 +23,7 @@ Get the image IP address, for example:
 Access it:
 
 `http://myip:8080/ag-push`
+
+## Contributing
+
+Patches are welcome, just send a pull request and I will be happy on merging it.
