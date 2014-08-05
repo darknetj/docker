@@ -1,4 +1,5 @@
 FROM fedora
+MAINTAINER Bruno Oliveira <bruno@abstractj.org>
 
 ENV PROJECT aerogear-unifiedpush-server
 
