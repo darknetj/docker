@@ -1,8 +1,6 @@
 FROM fedora
 MAINTAINER Bruno Oliveira <bruno@abstractj.org>
 
-ENV PROJECT aerogear-unifiedpush-server
-
 RUN sed -i 's/.*requiretty$/#Defaults requiretty/' /etc/sudoers
 RUN sudo yum -q -y install java-1.7.0-openjdk-devel wget && yum -q clean all
 
@@ -11,7 +9,7 @@ USER root
 RUN useradd -m aerogear -d /opt/aerogear -s /sbin/nologin
 RUN chown -R aerogear /opt/aerogear
 RUN chgrp -R users /opt/aerogear
-RUN echo "aerogear ALL=NOPASSWD:/usr/bin/keytool" >> /etc/sudoers
+RUN echo "aerogear ALL=NOPASSWD:/usr/bin/keytool,/usr/bin/yum" >> /etc/sudoers
 
 USER aerogear
 
