@@ -48,8 +48,8 @@ WORKDIR /opt/aerogear/aerogear-unifiedpush-server/servers
 
 RUN cp auth-server/target/*.war $JBOSS_HOME/standalone/deployments
 RUN cp ups-as7/target/*.war $JBOSS_HOME/standalone/deployments
+
 # Expose the ports we're interested in
-EXPOSE 8080 9990
+EXPOSE 8443
 
 ENTRYPOINT ["/opt/aerogear/server/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
-
