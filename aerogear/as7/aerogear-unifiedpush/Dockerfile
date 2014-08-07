@@ -11,6 +11,7 @@ USER root
 RUN useradd -m aerogear -d /opt/aerogear -s /sbin/nologin
 RUN chown -R aerogear /opt/aerogear
 RUN chgrp -R users /opt/aerogear
+RUN echo "aerogear ALL=NOPASSWD:/usr/bin/keytool" >> /etc/sudoers
 
 USER aerogear
 
@@ -44,7 +45,7 @@ RUN wget --quiet https://s3-eu-west-1.amazonaws.com/hamster.abstractj.org/auth-s
 
 WORKDIR /opt/aerogear/server
 # Expose the ports we're interested in
-EXPOSE 8080 9990
+EXPOSE 8443
 
 ENTRYPOINT ["/opt/aerogear/server/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
 
