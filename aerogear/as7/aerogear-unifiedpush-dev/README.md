@@ -8,7 +8,7 @@ Follow the [instructions](http://docs.docker.com/installation/)
 
 ## Running the image
 
-`docker run -it -p 8080:8080 -p 9090:9090 abstractj/unifiedpush-dev`
+`docker run -it -p 8443:8443 abstractj/unifiedpush-dev`
 
 ## Building the image (alternative)
 
@@ -24,7 +24,7 @@ Get the image IP address, for example:
 
 Access it:
 
-`http://myip:8080/ag-push`
+`https://myip:8443/ag-push`
 
 ## Pull request review
 
