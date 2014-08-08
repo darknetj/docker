@@ -2,7 +2,7 @@
 FROM fedora
 MAINTAINER Bruno Oliveira <bruno@abstractj.org>
 
-# Disable requiretty to prevent Node.js sessions to hangup
+# Disable requiretty to prevent Node.js sessions hangup
 RUN sed -i 's/.*requiretty$/#Defaults requiretty/' /etc/sudoers
 
 # Install OpenJDK and wget for AS7 images and clean the metadata
@@ -26,10 +26,10 @@ USER root
 # Create the aerogear user
 RUN useradd -m aerogear -d /opt/aerogear -s /sbin/nologin
 
-# Change the owner of the /opt/aerogear directory
+# Change owner of the /opt/aerogear directory
 RUN chown -R aerogear /opt/aerogear
 
-# Change the group of the /opt/aerogear directory
+# Change group of the /opt/aerogear directory
 RUN chgrp -R users /opt/aerogear
 
 # Allows aerogear user to run keytool and yum with sudo
@@ -50,7 +50,7 @@ RUN mkdir -p $JBOSS_HOME && tar xzvf jboss-as-$JBOSS_VERSION.tar.gz --strip 1 -C
 # Remove downloaded files
 RUN rm -f $HOME/*.tar.gz
 
-# JBoss AS7 configuration file already prepared with HTTPS configuration
+# JBoss AS7 configuration file ready for HTTPS
 ADD configuration/xml/standalone-sample.xml /opt/aerogear/server/standalone/configuration/standalone.xml
 
 # Add the certificate.sh script into $JBOSS_HOME/standalone/configuration/certs
@@ -62,7 +62,8 @@ ADD configuration/database/unifiedpush-h2-ds.xml /opt/aerogear/server/standalone
 # Switch to $JBOSS_HOME/configuration/certs
 WORKDIR /opt/aerogear/server/standalone/configuration/certs
 
-# Execute the script to generate self signed certificates and move back to the HOME folder
+# Execute the script to generate self signed certificates
 RUN ./certificate.sh
 
+# Switch to the working dir /opt/aerogear
 WORKDIR /opt/aerogear
