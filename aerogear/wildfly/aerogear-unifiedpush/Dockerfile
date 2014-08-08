@@ -1,11 +1,11 @@
-FROM abstractj/as7
+FROM abstractj/wildfly
 MAINTAINER Bruno Oliveira <bruno@abstractj.org>
 
 USER aerogear
 # Download binary files
 WORKDIR /opt/aerogear/server/standalone/deployments
-RUN wget --quiet https://s3-eu-west-1.amazonaws.com/hamster.abstractj.org/as7/ag-push.war
-RUN wget --quiet https://s3-eu-west-1.amazonaws.com/hamster.abstractj.org/as7/auth-server.war
+RUN wget --quiet https://s3-eu-west-1.amazonaws.com/hamster.abstractj.org/wildfly/ag-push.war
+RUN wget --quiet https://s3-eu-west-1.amazonaws.com/hamster.abstractj.org/wildfly/auth-server.war
 
 
 WORKDIR /opt/aerogear/server
