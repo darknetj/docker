@@ -33,7 +33,7 @@ RUN mv $JBOSS_HOME/standalone/configuration/standalone.xml $JBOSS_HOME/standalon
 ADD configuration/xml/standalone-sample.xml $JBOSS_HOME/standalone/configuration/standalone.xml
 
 # Add the certificate.sh script into $JBOSS_HOME/standalone/configuration/certs
-ADD cp configuration/certs/ $JBOSS_HOME/standalone/configuration/certs
+ADD configuration/certs/ $JBOSS_HOME/standalone/configuration/certs
 
 # Add the database configuration file to $JBOSS_HOME/standalone/deployments
 ADD configuration/database/unifiedpush-h2-ds.xml $JBOSS_HOME/standalone/deployments/
