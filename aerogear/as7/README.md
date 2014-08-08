@@ -15,7 +15,6 @@ Clone the repo and build yourself:
 
 `docker build -t abstractj/as7 .`
 
-
 ## Accessing it
 
 Get the image IP address, for example:
