@@ -28,9 +28,9 @@ RUN mkdir -p $JBOSS_HOME && tar xzvf jboss-as-7.1.1.Final.tar.gz --strip 1 -C $J
 RUN rm -f *.tar.gz
 
 # Server configuration files
-ADD ../configuration/xml/standalone-sample.xml /opt/aerogear/server/standalone/configuration/standalone.xml
-ADD ../configuration/certs/ /opt/aerogear/server/standalone/configuration/certs
-ADD ../configuration/database/unifiedpush-h2-ds.xml /opt/aerogear/server/standalone/deployments/
+ADD configuration/xml/standalone-sample.xml /opt/aerogear/server/standalone/configuration/standalone.xml
+ADD configuration/certs/ /opt/aerogear/server/standalone/configuration/certs
+ADD configuration/database/unifiedpush-h2-ds.xml /opt/aerogear/server/standalone/deployments/
 
 WORKDIR /opt/aerogear/server/standalone/configuration/certs
 RUN ./certificate.sh
