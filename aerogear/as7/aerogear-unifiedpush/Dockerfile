@@ -1,3 +1,4 @@
+# Use latest abstractj/as7 image as the base
 FROM abstractj/as7
 MAINTAINER Bruno Oliveira <bruno@abstractj.org>
 

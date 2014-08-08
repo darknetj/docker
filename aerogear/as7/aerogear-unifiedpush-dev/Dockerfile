@@ -2,6 +2,9 @@
 FROM abstractj/as7
 MAINTAINER Bruno Oliveira <bruno@abstractj.org>
 
+# Set the repository name
+ENV REPO_NAME aerogear-unifiedpush-server
+
 # Set MAVEN_OPTS to increase the amount of memory available for Maven
 ENV MAVEN_OPTS -Xmx768m -XX:+UseConcMarkSweepGC -XX:MaxPermSize=128m -XX:+CMSPermGenSweepingEnabled
 
@@ -51,13 +54,13 @@ RUN wget --quiet http://ftp.unicamp.br/pub/apache/maven/maven-3/$MAVEN_VERSION/b
 RUN mkdir $M2_HOME && tar xzf apache-maven-$MAVEN_VERSION-bin.tar.gz --strip 1 -C $M2_HOME
 
 # Remove downloaded files
-RUN rm -f /opt/aerogear/tools/*.tar.gz
+RUN rm -f $HOME/tools/*.tar.gz
 
 # Clone UnifiedPush server from the official repository
-RUN git clone https://github.com/aerogear/aerogear-unifiedpush-server.git
+RUN git clone https://github.com/aerogear/$REPO_NAME.git
 
 # Switch to the cloned repository and run Maven install
-RUN cd aerogear-unifiedpush-server && mvn clean install -DskipTests=true
+RUN cd $REPO_NAME && mvn clean install -DskipTests=true
 
 # Switch to server directory from UnifiedPush
 WORKDIR /opt/aerogear/aerogear-unifiedpush-server/servers

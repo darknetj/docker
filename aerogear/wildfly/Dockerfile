@@ -32,33 +32,27 @@ USER aerogear
 # Switch to the working dir /opt/aerogear
 WORKDIR /opt/aerogear
 
-# Create a symbolic link to make sure that all the other images can use the same pattern
-RUN ln -s /opt/wildfly-$WILDFLY_VERSION /opt/aerogear/server
-
-# Set the environment variable to /opt/aerogear/server
-ENV JBOSS_HOME /opt/aerogear/server
-
 # Wildfly configuration file ready for HTTPS
-ADD configuration/xml/standalone-sample.xml /opt/aerogear/server/standalone/configuration/standalone.xml
+ADD configuration/xml/standalone-sample.xml /opt/wildfly/standalone/configuration/standalone.xml
 
 # Add the certificate.sh script into $JBOSS_HOME/standalone/configuration/certs
-ADD configuration/certs/ /opt/aerogear/server/standalone/configuration/certs
+ADD configuration/certs/ /opt/wildfly/standalone/configuration/certs
 
 # Add the database configuration file to $JBOSS_HOME/standalone/deployments
-ADD configuration/database/unifiedpush-h2-ds.xml /opt/aerogear/server/standalone/deployments/
+ADD configuration/database/unifiedpush-h2-ds.xml /opt/wildfly/standalone/deployments/
 
 # Switch to $JBOSS_HOME/configuration/certs
-WORKDIR /opt/aerogear/server/standalone/configuration/certs
+WORKDIR /opt/wildfly/standalone/configuration/certs
 
 # Execute the script to generate self signed certificates
 RUN ./certificate.sh
 
 # Switch to the working dir /opt/aerogear
-WORKDIR /opt/aerogear/server
+WORKDIR /opt/wildfly
 
 # Expose SSL default port
 EXPOSE 8443
 
 # Set the default command to run on boot
 # This will boot WildFly in the standalone mode and bind to all interface
-ENTRYPOINT ["/opt/aerogear/server/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
+ENTRYPOINT ["/opt/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]

@@ -1,16 +1,15 @@
+# Use latest abstractj/wildfly image as the base
 FROM abstractj/wildfly
 MAINTAINER Bruno Oliveira <bruno@abstractj.org>
 
+# Run everything below as aerogear user
 USER aerogear
-# Download binary files
-WORKDIR /opt/aerogear/server/standalone/deployments
+
+# Switch to the working dir $JBOSS_HOME/standalone/deployments
+WORKDIR /opt/wildfly/standalone/deployments
+
+# Download binary file for the auth-server with Keycloak
 RUN wget --quiet https://s3-eu-west-1.amazonaws.com/hamster.abstractj.org/wildfly/ag-push.war
+
+# Download binary file for the UnifiedPush server
 RUN wget --quiet https://s3-eu-west-1.amazonaws.com/hamster.abstractj.org/wildfly/auth-server.war
-
-
-WORKDIR /opt/aerogear/server
-# Expose the ports we're interested in
-EXPOSE 8443
-
-ENTRYPOINT ["/opt/aerogear/server/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
-
