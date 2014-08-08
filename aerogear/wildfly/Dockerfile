@@ -26,12 +26,6 @@ RUN chgrp -R users /opt/aerogear && chown -R aerogear /opt/wildfly*
 # Allows aerogear user to run keytool and yum with sudo
 RUN echo "aerogear ALL=NOPASSWD:/usr/bin/keytool,/usr/bin/yum" >> /etc/sudoers
 
-# Run everything below as aerogear user
-USER aerogear
-
-# Switch to the working dir /opt/aerogear
-WORKDIR /opt/aerogear
-
 # Wildfly configuration file ready for HTTPS
 RUN cp configuration/xml/standalone-sample.xml /opt/wildfly/standalone/configuration/standalone.xml
 
