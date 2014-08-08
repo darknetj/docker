@@ -27,16 +27,16 @@ RUN chgrp -R users /opt/aerogear && chown -R aerogear /opt/wildfly*
 RUN echo "aerogear ALL=NOPASSWD:/usr/bin/keytool,/usr/bin/yum" >> /etc/sudoers
 
 # Rename the original configuration file
-RUN mv $JBOSS_HOME/standalone/configuration/standalone.xml $JBOSS_HOME/standalone/configuration/standalone.xml.orig
+RUN mv $WILDFLY_HOME/standalone/configuration/standalone.xml $WILDFLY_HOME/standalone/configuration/standalone.xml.orig
 
 # Wildfly configuration file ready for HTTPS
-ADD configuration/xml/standalone-sample.xml /opt/wildfly/standalone/configuration/standalone.xml
+ADD configuration/xml/standalone-sample.xml $WILDFLY_HOME/standalone/configuration/standalone.xml
 
 # Add the certificate.sh script into $JBOSS_HOME/standalone/configuration/certs
-ADD cp configuration/certs/ /opt/wildfly/standalone/configuration/certs
+ADD cp configuration/certs/ $WILDFLY_HOME/standalone/configuration/certs
 
 # Add the database configuration file to $JBOSS_HOME/standalone/deployments
-ADD configuration/database/unifiedpush-h2-ds.xml /opt/wildfly/standalone/deployments/
+ADD configuration/database/unifiedpush-h2-ds.xml $WILDFLY_HOME/standalone/deployments/
 
 # Switch to $JBOSS_HOME/configuration/certs
 WORKDIR /opt/wildfly/standalone/configuration/certs
