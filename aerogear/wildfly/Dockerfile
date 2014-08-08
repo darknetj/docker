@@ -35,6 +35,9 @@ WORKDIR /opt/aerogear
 # Create a symbolic link to make sure that all the other images can use the same pattern
 RUN ln -s /opt/wildfly-$WILDFLY_VERSION /opt/aerogear/server
 
+# Set the environment variable to /opt/aerogear/server
+ENV JBOSS_HOME /opt/aerogear/server
+
 # Wildfly configuration file ready for HTTPS
 ADD configuration/xml/standalone-sample.xml /opt/aerogear/server/standalone/configuration/standalone.xml
 
@@ -51,4 +54,11 @@ WORKDIR /opt/aerogear/server/standalone/configuration/certs
 RUN ./certificate.sh
 
 # Switch to the working dir /opt/aerogear
-WORKDIR /opt/aerogear
+WORKDIR /opt/aerogear/server
+
+# Expose SSL default port
+EXPOSE 8443
+
+# Set the default command to run on boot
+# This will boot WildFly in the standalone mode and bind to all interface
+ENTRYPOINT ["/opt/aerogear/server/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]

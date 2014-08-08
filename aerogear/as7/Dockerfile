@@ -66,4 +66,11 @@ WORKDIR /opt/aerogear/server/standalone/configuration/certs
 RUN ./certificate.sh
 
 # Switch to the working dir /opt/aerogear
-WORKDIR /opt/aerogear
+WORKDIR /opt/aerogear/server
+
+# Expose SSL default port
+EXPOSE 8443
+
+# Set the default command to run on boot
+# This will boot WildFly in the standalone mode and bind to all interface
+ENTRYPOINT ["/opt/aerogear/server/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]

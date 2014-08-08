@@ -1,16 +1,14 @@
 FROM abstractj/as7
 MAINTAINER Bruno Oliveira <bruno@abstractj.org>
 
+# Run everything below as aerogear user
 USER aerogear
-# Download binary files
+
+# Switch to the working dir $JBOSS_HOME/standalone/deployments
 WORKDIR /opt/aerogear/server/standalone/deployments
-RUN wget --quiet https://s3-eu-west-1.amazonaws.com/hamster.abstractj.org/as7/ag-push.war
+
+# Download binary file for the auth-server with Keycloak
 RUN wget --quiet https://s3-eu-west-1.amazonaws.com/hamster.abstractj.org/as7/auth-server.war
 
-
-WORKDIR /opt/aerogear/server
-# Expose the ports we're interested in
-EXPOSE 8443
-
-ENTRYPOINT ["/opt/aerogear/server/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
-
+# Download binary file for the UnifiedPush server
+RUN wget --quiet https://s3-eu-west-1.amazonaws.com/hamster.abstractj.org/as7/ag-push.war
