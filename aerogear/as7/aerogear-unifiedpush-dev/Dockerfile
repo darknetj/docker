@@ -54,7 +54,7 @@ RUN wget --quiet http://ftp.unicamp.br/pub/apache/maven/maven-3/$MAVEN_VERSION/b
 RUN mkdir $M2_HOME && tar xzf apache-maven-$MAVEN_VERSION-bin.tar.gz --strip 1 -C $M2_HOME
 
 # Remove downloaded files
-RUN rm -f $HOME/tools/*.tar.gz
+RUN rm -f $HOME/*.tar.gz
 
 # Clone UnifiedPush server from the official repository
 RUN git clone https://github.com/aerogear/$REPO_NAME.git
