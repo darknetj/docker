@@ -33,13 +33,13 @@ USER aerogear
 WORKDIR /opt/aerogear
 
 # Wildfly configuration file ready for HTTPS
-ADD configuration/xml/standalone-sample.xml /opt/wildfly/standalone/configuration/standalone.xml
+RUN cp configuration/xml/standalone-sample.xml /opt/wildfly/standalone/configuration/standalone.xml
 
 # Add the certificate.sh script into $JBOSS_HOME/standalone/configuration/certs
-ADD configuration/certs/ /opt/wildfly/standalone/configuration/certs
+RUN cp configuration/certs/ /opt/wildfly/standalone/configuration/certs
 
 # Add the database configuration file to $JBOSS_HOME/standalone/deployments
-ADD configuration/database/unifiedpush-h2-ds.xml /opt/wildfly/standalone/deployments/
+RUN cp configuration/database/unifiedpush-h2-ds.xml /opt/wildfly/standalone/deployments/
 
 # Switch to $JBOSS_HOME/configuration/certs
 WORKDIR /opt/wildfly/standalone/configuration/certs
