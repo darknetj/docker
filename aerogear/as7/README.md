@@ -28,6 +28,8 @@ It only exposes SSL port, all the requests will redirect to https.
 
 `https://myip:8443/`
 
+*Note*: The SSL certificate is automatically generated and self-signed
+
 ## Contributing
 
 Patches are welcome, just send a pull request and I will be happy on merging it. If you want more images, open issues
