@@ -11,6 +11,9 @@ ENV JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk
 # Run everything below as root user
 USER root
 
+# Install wget for Wildfly images and clean the metadata
+RUN yum -q -y install wget && yum -q clean all
+
 # Disable requiretty to prevent Node.js sessions hangup
 RUN sed -i 's/.*requiretty$/#Defaults requiretty/' /etc/sudoers
 
@@ -26,20 +29,17 @@ RUN chgrp -R users /opt/aerogear && chown -R aerogear /opt/wildfly*
 # Allows aerogear user to run keytool and yum with sudo
 RUN echo "aerogear ALL=NOPASSWD:/usr/bin/keytool,/usr/bin/yum" >> /etc/sudoers
 
-# Run everything below as aerogear user
-USER aerogear
-
-# Switch to the working dir /opt/aerogear
-WORKDIR /opt/aerogear
+# Rename the original configuration file
+RUN mv $JBOSS_HOME/standalone/configuration/standalone.xml $JBOSS_HOME/standalone/configuration/standalone.xml.orig
 
 # Wildfly configuration file ready for HTTPS
-ADD configuration/xml/standalone-sample.xml /opt/wildfly/standalone/configuration/standalone.xml
+ADD configuration/xml/standalone-sample.xml $JBOSS_HOME/standalone/configuration/standalone.xml
 
 # Add the certificate.sh script into $JBOSS_HOME/standalone/configuration/certs
-ADD configuration/certs/ /opt/wildfly/standalone/configuration/certs
+ADD configuration/certs/ $JBOSS_HOME/standalone/configuration/certs
 
 # Add the database configuration file to $JBOSS_HOME/standalone/deployments
-ADD configuration/database/unifiedpush-h2-ds.xml /opt/wildfly/standalone/deployments/
+ADD configuration/database/unifiedpush-h2-ds.xml $JBOSS_HOME/standalone/deployments/
 
 # Switch to $JBOSS_HOME/configuration/certs
 WORKDIR /opt/wildfly/standalone/configuration/certs
