@@ -9,7 +9,7 @@ USER aerogear
 WORKDIR /opt/aerogear/server/standalone/deployments
 
 # Download binary file for the auth-server with Keycloak
-RUN wget --quiet https://s3-eu-west-1.amazonaws.com/hamster.abstractj.org/as7/auth-server.war
+RUN curl -O https://s3-eu-west-1.amazonaws.com/hamster.abstractj.org/as7/auth-server.war
 
 # Download binary file for the UnifiedPush server
-RUN wget --quiet https://s3-eu-west-1.amazonaws.com/hamster.abstractj.org/as7/ag-push.war
+RUN curl -O https://s3-eu-west-1.amazonaws.com/hamster.abstractj.org/as7/ag-push.war

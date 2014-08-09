@@ -45,16 +45,10 @@ RUN sudo npm install -g grunt-cli bower@1.3.8 node-gyp
 WORKDIR /opt/aerogear
 
 # Create directory tools for Maven download
-RUN mkdir tools
+RUN mkdir tools && cd tools
 
-# Download Maven
-RUN wget --quiet http://ftp.unicamp.br/pub/apache/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz
-
-# Create /opt/aerogear/tools/maven and extract Maven content
-RUN mkdir $M2_HOME && tar xzf apache-maven-$MAVEN_VERSION-bin.tar.gz --strip 1 -C $M2_HOME
-
-# Remove downloaded files
-RUN rm -f $HOME/*.tar.gz
+# Create /opt/aerogear/tools/maven, download and extract Maven
+RUN mkdir -p $M2_HOME && cd $M2_HOME && curl http://ftp.unicamp.br/pub/apache/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar zx --strip 1 -C $M2_HOME
 
 # Clone UnifiedPush server from the official repository
 RUN git clone https://github.com/aerogear/$REPO_NAME.git
