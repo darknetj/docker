@@ -5,8 +5,8 @@ MAINTAINER Bruno Oliveira <bruno@abstractj.org>
 # Disable requiretty to prevent Node.js sessions hangup
 RUN sed -i 's/.*requiretty$/#Defaults requiretty/' /etc/sudoers
 
-# Install OpenJDK and wget for AS7 images and clean the metadata
-RUN sudo yum -q -y install java-1.7.0-openjdk-devel wget && yum -q clean all
+# Install OpenJDK for AS7 images and clean the metadata
+RUN sudo yum -q -y install java-1.7.0-openjdk-devel && yum -q clean all
 
 # Set the HOME environment variable
 ENV HOME /opt/aerogear
@@ -38,17 +38,8 @@ RUN echo "aerogear ALL=NOPASSWD:/usr/bin/keytool,/usr/bin/yum" >> /etc/sudoers
 # Run everything below as aerogear user
 USER aerogear
 
-# Switch to the working dir /opt/aerogear
-WORKDIR /opt/aerogear
-
-# Download JBoss AS7
-RUN wget --quiet http://download.jboss.org/jbossas/7.1/jboss-as-$JBOSS_VERSION/jboss-as-$JBOSS_VERSION.tar.gz
-
-# Create /opt/aerogear/server and extract the server
-RUN mkdir -p $JBOSS_HOME && tar xzvf jboss-as-$JBOSS_VERSION.tar.gz --strip 1 -C $JBOSS_HOME
-
-# Remove downloaded files
-RUN rm -f $HOME/*.tar.gz
+# Create /opt/aerogear/server and extract the server and download JBoss AS7
+RUN mkdir -p $JBOSS_HOME && cd $JBOSS_HOME && curl http://download.jboss.org/jbossas/7.1/jboss-as-$JBOSS_VERSION/jboss-as-$JBOSS_VERSION.tar.gz | tar zx --strip 1 -C $JBOSS_HOME
 
 # JBoss AS7 configuration file ready for HTTPS
 ADD configuration/xml/standalone-sample.xml /opt/aerogear/server/standalone/configuration/standalone.xml
