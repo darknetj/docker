@@ -6,6 +6,11 @@ This base image prepare [AS7](http://download.jboss.org/jbossas/7.1/jboss-as-7.1
 
 Follow the [instructions](http://docs.docker.com/installation/)
 
+## Running the image
+
+**Note**: The image will run SSL by default with self signed certificates being automatically generated.
+
+`docker run -it -p 8443:8443 abstractj/as7`
 
 ## Building the image
 

@@ -6,6 +6,11 @@ This base image prepare [Wildfly](http://download.jboss.org/wildfly/8.1.0.Final/
 
 Follow the [instructions](http://docs.docker.com/installation/)
 
+## Running the image
+
+**Note**: The image will run SSL by default with self signed certificates being automatically generated.
+
+`docker run -it -p 8443:8443 abstractj/wildfly`
 
 ## Building the image
 
