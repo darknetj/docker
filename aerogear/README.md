@@ -12,9 +12,9 @@ Image to run AeroGear UnifiedPush server, see details [here](https://github.com/
 
 Image to run AeroGear UnifiedPush server developer environment, see details [here](https://github.com/abstractj/docker/tree/master/aerogear/as7/aerogear-unifiedpush-dev)
 
-## Wildfly
+## WildFly
 
-Base image for Wildfly support, see details [here](https://github.com/abstractj/docker/tree/master/aerogear/wildfly)
+Base image for WildFly support, see details [here](https://github.com/abstractj/docker/tree/master/aerogear/wildfly)
 
 ### AeroGear UnifiedPush
 

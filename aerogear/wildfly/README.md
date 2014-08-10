@@ -1,6 +1,6 @@
-# AeroGear Wildfly Docker image
+# AeroGear WildFly Docker image
 
-This base image prepare [Wildfly](http://download.jboss.org/wildfly/8.1.0.Final/wildfly-8.1.0.Final.tar.gz) environment to successfully deploy AeroGear projects, as well the required configuration.
+This base image prepare [WildFly](http://download.jboss.org/wildfly/8.1.0.Final/wildfly-8.1.0.Final.tar.gz) environment to successfully deploy AeroGear projects, as well the required configuration.
 
 ## Install Docker
 

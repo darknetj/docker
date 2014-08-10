@@ -32,7 +32,7 @@ RUN echo "aerogear ALL=NOPASSWD:/usr/bin/keytool,/usr/bin/yum" >> /etc/sudoers
 # Rename the original configuration file
 RUN mv $JBOSS_HOME/standalone/configuration/standalone.xml $JBOSS_HOME/standalone/configuration/standalone.xml.orig
 
-# Wildfly configuration file ready for HTTPS
+# WildFly configuration file ready for HTTPS
 ADD configuration/xml/standalone-sample.xml $JBOSS_HOME/standalone/configuration/standalone.xml
 
 # Add the certificate.sh script into $JBOSS_HOME/standalone/configuration/certs
