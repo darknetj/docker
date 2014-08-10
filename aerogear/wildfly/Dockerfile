@@ -11,8 +11,8 @@ ENV JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk
 # Run everything below as root user
 USER root
 
-# Install wget for Wildfly images and clean the metadata
-RUN yum -q -y install wget && yum -q clean all
+# Clean the metadata
+RUN yum -q clean all
 
 # Disable requiretty to prevent Node.js sessions hangup
 RUN sed -i 's/.*requiretty$/#Defaults requiretty/' /etc/sudoers
@@ -52,7 +52,3 @@ WORKDIR /opt/wildfly
 
 # Expose SSL default port
 EXPOSE 8443
-
-# Set the default command to run on boot
-# This will boot WildFly in the standalone mode and bind to all interface
-ENTRYPOINT ["/opt/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
