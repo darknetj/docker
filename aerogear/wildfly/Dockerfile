@@ -48,7 +48,7 @@ WORKDIR /opt/wildfly/standalone/configuration/certs
 RUN ./certificate.sh
 
 # Switch to the working dir /opt/aerogear
-WORKDIR /opt/wildfly
+WORKDIR /opt/aerogear
 
 # Expose SSL default port
 EXPOSE 8443

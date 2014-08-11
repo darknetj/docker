@@ -57,7 +57,7 @@ WORKDIR /opt/aerogear/server/standalone/configuration/certs
 RUN ./certificate.sh
 
 # Switch to the working dir /opt/aerogear
-WORKDIR /opt/aerogear/server
+WORKDIR /opt/aerogear
 
 # Expose SSL default port
 EXPOSE 8443
