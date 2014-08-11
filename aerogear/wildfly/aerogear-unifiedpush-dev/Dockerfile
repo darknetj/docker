@@ -1,4 +1,4 @@
-# Use latest abstractj/as7 image as the base
+# Use latest abstractj/wildfly image as the base
 FROM abstractj/wildfly
 MAINTAINER Bruno Oliveira <bruno@abstractj.org>
 
