@@ -56,8 +56,8 @@ WORKDIR /opt/aerogear/server/standalone/configuration/certs
 # Execute the script to generate self signed certificates
 RUN ./certificate.sh
 
-# Switch to the working dir /opt/aerogear
-WORKDIR /opt/aerogear
+# Switch to the working dir /opt/aerogear/server
+WORKDIR /opt/aerogear/server
 
 # Expose SSL default port
 EXPOSE 8443
