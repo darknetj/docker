@@ -9,7 +9,7 @@ USER aerogear
 WORKDIR /opt/wildfly/standalone/deployments
 
 # Download binary file for the UnifiedPush server
-RUN curl -O https://s3-eu-west-1.amazonaws.com/hamster.abstractj.org/wildfly/ag-push.war
+RUN curl -o ag-push.war https://repository.jboss.org/nexus/content/repositories/jboss_releases_staging_profile-3682/org/jboss/aerogear/unifiedpush/unifiedpush-server-wildfly/1.0.0.Beta2/unifiedpush-server-wildfly-1.0.0.Beta2.war 
 
 # Download binary file for the auth-server with Keycloak
-RUN curl -O https://s3-eu-west-1.amazonaws.com/hamster.abstractj.org/wildfly/auth-server.war
+RUN curl -o auth-server.war https://repository.jboss.org/nexus/content/repositories/jboss_releases_staging_profile-3682/org/jboss/aerogear/unifiedpush/unifiedpush-auth-server/1.0.0.Beta2/unifiedpush-auth-server-1.0.0.Beta2.war
