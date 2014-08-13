@@ -48,7 +48,7 @@ WORKDIR /opt/aerogear
 RUN mkdir tools && cd tools
 
 # Create /opt/aerogear/tools/maven, download and extract Maven
-RUN mkdir -p $M2_HOME && cd $M2_HOME && curl http://ftp.unicamp.br/pub/apache/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar zx --strip 1 -C $M2_HOME
+RUN mkdir -p $M2_HOME && cd $M2_HOME && curl http://mirror.nbtelecom.com.br/apache/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar zx --strip 1 -C $M2_HOME
 
 
 # Clone UnifiedPush server from the official repository
