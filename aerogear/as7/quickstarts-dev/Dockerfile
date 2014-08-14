@@ -31,7 +31,7 @@ USER aerogear
 WORKDIR /opt/aerogear
 
 # Clone UnifiedPush server from the official repository
-RUN git clone https://github.com/abstractj/$REPO_NAME.git
+RUN git clone https://github.com/aerogear/$REPO_NAME.git
 
 ENTRYPOINT ["/opt/aerogear/bin/launch.sh"]
 

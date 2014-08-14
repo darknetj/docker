@@ -38,7 +38,7 @@ config(){
     red "I would love if you configure the quickstarts, otherwise I won't be able to help you\n" | cowsay
     config
   else
-    printf '{"url":"%s","applicationId":"%s","masterSecret":"%s"}\n' "$URL" "$APPLICATION_ID" "$MASTER_SECRET" > $CONFIG_FILE
+    printf '{"serverUrl":"%s","applicationId":"%s","masterSecret":"%s"}\n' "$URL" "$APPLICATION_ID" "$MASTER_SECRET" > $CONFIG_FILE
     launch
     exit 0
   fi
