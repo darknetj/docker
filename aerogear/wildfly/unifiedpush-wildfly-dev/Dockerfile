@@ -15,7 +15,7 @@ ENV NPM_MODULES_HOME /opt/aerogear/node_modules/
 ENV JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk
 
 # Set the Maven version
-ENV MAVEN_VERSION 3.2.2
+ENV MAVEN_VERSION 3.1.1
 
 # Set M2_HOME directory
 ENV M2_HOME /opt/aerogear/tools/maven
