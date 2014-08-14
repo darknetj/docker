@@ -22,7 +22,7 @@ Clone the repo and build yourself:
 
 Get the image IP address, for example:
 
-`boot2docker ip`
+`boot2docker ip` or `docker inspect IMAGENAME | grep -i IPAdr`
 
 Access it:
 
