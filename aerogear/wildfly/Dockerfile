@@ -52,3 +52,6 @@ WORKDIR /opt/wildfly
 
 # Expose SSL default port
 EXPOSE 8443
+
+# Set the default command to run on boot
+ENTRYPOINT ["/opt/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
