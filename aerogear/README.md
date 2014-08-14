@@ -6,15 +6,15 @@ Base image for JBoss AS7 7.1.1.Final support, see details [here](https://github.
 
 ### AeroGear UnifiedPush
 
-Image to run AeroGear UnifiedPush server 1.0.0.Beta2, see details [here](https://github.com/abstractj/docker/tree/master/aerogear/as7/aerogear-unifiedpush)
+Image to run AeroGear UnifiedPush server 1.0.0.Beta2, see details [here](https://github.com/abstractj/docker/tree/master/aerogear/as7/unifiedpush-as7)
 
 ### AeroGear UnifiedPush Development
 
-Image to run AeroGear UnifiedPush server developer environment, see details [here](https://github.com/abstractj/docker/tree/master/aerogear/as7/aerogear-unifiedpush-dev)
+Image to run AeroGear UnifiedPush server developer environment, see details [here](https://github.com/abstractj/docker/tree/master/aerogear/as7/unifiedpush-as7-dev)
 
 ### AeroGear UnifiedPush Quickstarts Development
 
-Image to run AeroGear UnifiedPush server quickstarts developer environment, see details [here](https://github.com/abstractj/docker/tree/master/aerogear/as7/push-quickstarts-dev)
+Image to run AeroGear UnifiedPush server quickstarts developer environment, see details [here](https://github.com/abstractj/docker/tree/master/aerogear/as7/push-quickstarts-as7-dev)
 
 ## WildFly
 
@@ -22,15 +22,15 @@ Base image for WildFly 8.1.0.Final support, see details [here](https://github.co
 
 ### AeroGear UnifiedPush
 
-Image to run AeroGear UnifiedPush server 1.0.0.Beta2, see details [here](https://github.com/abstractj/docker/tree/master/aerogear/wildfly/aerogear-unifiedpush)
+Image to run AeroGear UnifiedPush server 1.0.0.Beta2, see details [here](https://github.com/abstractj/docker/tree/master/aerogear/wildfly/unifiedpush-wildfly)
 
 ### AeroGear UnifiedPush Development
 
-Image to run AeroGear UnifiedPush server developer environment, see details [here](https://github.com/abstractj/docker/tree/master/aerogear/wildfly/aerogear-unifiedpush-dev)
+Image to run AeroGear UnifiedPush server developer environment, see details [here](https://github.com/abstractj/docker/tree/master/aerogear/wildfly/unifiedpush-wildfly-dev)
 
 
 ### AeroGear UnifiedPush Quickstarts Development
 
-Image to run AeroGear UnifiedPush server quickstarts developer environment, see details [here](https://github.com/abstractj/docker/tree/master/aerogear/wildfly/push-quickstarts-dev)
+Image to run AeroGear UnifiedPush server quickstarts developer environment, see details [here](https://github.com/abstractj/docker/tree/master/aerogear/wildfly/push-quickstarts-wildfly-dev)
 
 
