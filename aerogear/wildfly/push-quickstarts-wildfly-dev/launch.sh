@@ -10,7 +10,7 @@ launch() {
   if [ -d $HOME/$REPO_NAME ] && [ -f $CONFIG_FILE ];then
     echo "We are about to download the whole internet, be patient" | cowsay
     cd $HOME/$REPO_NAME && mvn -s quickstart-settings.xml clean install -DskipTests=true
-    cp $HOME/$REPO_NAME/server/contacts-mobile-picketlink-secured/target/jboss-contacts-mobile-picketlink-secured.war $JBOSS_HOME/standalone/deployments/
+    find $HOME/$REPO_NAME/ -not \( -name *mobile-proxy* -prune \) -name *.war -exec cp -i {} $JBOSS_HOME/standalone/deployments/ \;
   fi
   $JBOSS_HOME/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0
 }
