@@ -11,7 +11,18 @@ ENV TERM /bin/sh
 USER root
 
 # Install OpenJDK for AS7 images and clean the metadata
-RUN sudo yum -q -y install cowsay && yum -q clean all
+RUN sudo yum -q -y install cowsay xterm-256color && yum -q clean all
+
+# Give access to /bin/bash to execute shell scripts
+RUN usermod -s /bin/bash aerogear
+
+# Add initialization script to bin folder
+ADD resources/quickstart-config.sh /opt/aerogear/bin/
+ADD launch.sh /opt/aerogear/bin/
+
+RUN chmod -R 755 /opt/aerogear/bin
+
+ENV TERM xterm
 
 # Run everything below as aerogear user
 USER aerogear
@@ -21,10 +32,6 @@ WORKDIR /opt/aerogear
 
 # Clone UnifiedPush server from the official repository
 RUN git clone https://github.com/abstractj/$REPO_NAME.git
-
-# Add initialization script to bin folder
-ADD resources/quickstart-config.sh /opt/aerogear/bin/
-ADD launch.sh /opt/aerogear/bin/
 
 ENTRYPOINT ["/opt/aerogear/bin/launch.sh"]
 

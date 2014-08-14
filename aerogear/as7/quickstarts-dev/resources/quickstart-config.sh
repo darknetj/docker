@@ -1,3 +1,7 @@
+#!/bin/bash
+
+CONFIG_FILE=$HOME/$REPO_NAME/server/contacts-mobile-picketlink-secured/src/main/resources/META-INF/quickstarts-config.json
+
 # Color functions
 blue(){
   printf "\e[38;05;4m $1"
@@ -16,17 +20,9 @@ green(){
   tput sgr0
 }
 
-
-launch() {
-  if [ -d $HOME/$REPO_NAME ] && [ -f $HOME/quickstarts-config.json ];then
-    green "We are about to download the whole internet, be patient\n" | cowsay
-    cd $HOME/$REPO_NAME && mvn -s quickstart-settings.xml clean install -DskipTests=true
-  fi
-  /opt/aerogear/server/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0
-}
-
 # Configuration menu
 config(){
+  clear
   green "=========================================================================\n"
   green  "Quickstarts initial configuration\n"
   green "=========================================================================\n"
@@ -42,12 +38,9 @@ config(){
     red "I would love if you configure the quickstarts, otherwise I won't be able to help you\n" | cowsay
     config
   else
-    printf '{"url":"%s","applicationId":"%s","masterSecret":"%s"}\n' "$URL" "$APPLICATION_ID" "$MASTER_SECRET" > $HOME/$REPO_NAME/server/contacts-mobile-picketlink-secured/src/main/resources/META-INF/quickstarts-config.json
+    printf '{"url":"%s","applicationId":"%s","masterSecret":"%s"}\n' "$URL" "$APPLICATION_ID" "$MASTER_SECRET" > $CONFIG_FILE
     launch
     exit 0
   fi
 }
-
-config
-
 
