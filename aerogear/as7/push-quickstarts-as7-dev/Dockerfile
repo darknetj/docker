@@ -44,9 +44,6 @@ USER aerogear
 # Switch to the working dir /opt/aerogear
 WORKDIR /opt/aerogear
 
-# Create directory tools for Maven download
-RUN mkdir tools && cd tools
-
 # Create /opt/aerogear/tools/maven, download and extract Maven
 RUN mkdir -p $M2_HOME && cd $M2_HOME && curl http://mirror.nbtelecom.com.br/apache/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar zx --strip 1 -C $M2_HOME
 
