@@ -34,7 +34,7 @@ WORKDIR /opt/aerogear
 RUN git clone https://github.com/aerogear/$REPO_NAME.git
 
 # Switch to the cloned repository and run Maven install
-RUN cd $REPO_NAME && mvn clean install -DskipTests=true
+RUN cd $REPO_NAME && mvn -s quickstart-settings.xml clean install -DskipTests=true
 
 ENTRYPOINT ["/opt/aerogear/bin/launch.sh"]
 
