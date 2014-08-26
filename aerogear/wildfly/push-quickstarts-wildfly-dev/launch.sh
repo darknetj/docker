@@ -9,7 +9,7 @@ source $HOME/bin/quickstart-config.sh
 launch() {
   if [ -d $HOME/$REPO_NAME ] && [ -f $CONFIG_FILE ];then
     echo "Time to run Maven, be patient" | cowsay
-    cd $HOME/$REPO_NAME && mvn -s quickstart-settings.xml clean install -DskipTests=true
+    cd $HOME/$REPO_NAME && mvn clean install -DskipTests=true
     find $HOME/$REPO_NAME/ -not \( -name *mobile-proxy* -prune \) -name *.war -exec cp -i {} $JBOSS_HOME/standalone/deployments/ \;
   fi
   $JBOSS_HOME/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0
