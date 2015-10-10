@@ -42,5 +42,5 @@ RUN wget -c 'https://www.mwrinfosecurity.com/system/assets/380/original/sieve.ap
 RUN echo 'adb forward tcp:31415 tcp:31415' >> /home/drozer/.bashrc
 
 # Alias for Drozer
-RUN echo "alias -g drozer='drozer console connect" >> /home/drozer/.bashrc
+RUN echo "alias drozer='drozer console connect'" >> /home/drozer/.bashrc
 
