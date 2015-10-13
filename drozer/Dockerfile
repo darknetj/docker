@@ -35,6 +35,9 @@ RUN rm *.deb
 # Run as drozer user
 USER drozer
 
+# Download agent
+RUN wget -c 'https://www.mwrinfosecurity.com/system/assets/934/original/drozer-agent-2.3.4.apk'
+
 # Download sieve
 RUN wget -c 'https://www.mwrinfosecurity.com/system/assets/380/original/sieve.apk'
 

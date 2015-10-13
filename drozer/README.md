@@ -7,6 +7,7 @@ Docker image for getting started with [Drozer](https://github.com/mwrlabs/drozer
 Follow the [instructions](http://docs.docker.com/installation/)
 
 ## Built with
+
 - latest debian
 - openjdk 7
 - Android SDK 24.3.4
@@ -18,6 +19,14 @@ Follow the [instructions](http://docs.docker.com/installation/)
     docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb abstractj/drozer bash
     $ drozer
 You must be able to see Drozer console.
+
+## Deploying the agent and sieve for testing
+
+  The [agent](https://www.mwrinfosecurity.com/system/assets/934/original/drozer-agent-2.3.4.apk) and the [testing application](https://www.mwrinfosecurity.com/system/assets/380/original/sieve.apk) are already available under `/home/drozer`. To install the APK file on an Android phone run:
+
+    docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb abstractj/drozer bash
+    adb install drozer-agent-2.3.4.apk
+    adb install sieve.apk
 
 ## Contributing
 
