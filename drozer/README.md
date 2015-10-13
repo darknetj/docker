@@ -15,11 +15,6 @@ Follow the [instructions](http://docs.docker.com/installation/)
 ## Running the adb devices command
     docker run --privileged -v /dev/bus/usb:/dev/bus/usb abstractj/drozer adb devices
 
-## Running Drozer console
-    docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb abstractj/drozer bash
-    $ drozer
-You must be able to see Drozer console.
-
 ## Deploying the agent and sieve for testing
 
   The [agent](https://www.mwrinfosecurity.com/system/assets/934/original/drozer-agent-2.3.4.apk) and the [testing application](https://www.mwrinfosecurity.com/system/assets/380/original/sieve.apk) are already available under `/home/drozer`. To install the APK file on an Android phone run:
@@ -27,6 +22,46 @@ You must be able to see Drozer console.
     docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb abstractj/drozer bash
     adb install drozer-agent-2.3.4.apk
     adb install sieve.apk
+
+  Now you just have to enable the agent:
+
+![Drozer Agent](http://i.imgur.com/vTyssun.jpg)
+
+  *Note*: Please make sure that your phone is connected on USB.
+
+
+## Running Drozer console
+
+```
+$ docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb abstractj/drozer bash                                                       ⏎
+* daemon not running. starting it now on port 5037 *
+* daemon started successfully *
+```
+
+Now type `drozer`:
+```
+drozer@8e81701f686d:~$ drozer
+Selecting 23d371d51760c530 (samsung GT-I9100 4.0.3)
+
+            ..                    ..:.
+           ..o..                  .r..
+            ..a..  . ....... .  ..nd
+              ro..idsnemesisand..pr
+              .otectorandroidsneme.
+           .,sisandprotectorandroids+.
+         ..nemesisandprotectorandroidsn:.
+        .emesisandprotectorandroidsnemes..
+      ..isandp,..,rotectorandro,..,idsnem.
+      .isisandp..rotectorandroid..snemisis.
+      ,andprotectorandroidsnemisisandprotec.
+     .torandroidsnemesisandprotectorandroid.
+     .snemisisandprotectorandroidsnemesisan:
+     .dprotectorandroidsnemesisandprotector.
+
+drozer Console (v2.3.4)
+dz>
+```
+You must be able to see the Drozer console.
 
 ## Contributing
 
